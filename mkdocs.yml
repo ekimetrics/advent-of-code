@@ -20,7 +20,7 @@ markdown_extensions:
   - toc:
       permalink: true
 repo_name: 'advent-of-code'
-repo_url: 'https://github.com/ekimetrics/'
+repo_url: 'https://github.com/ekimetrics/advent-of-code'
 
 extra_css:
   - ./stylesheets/extra.css

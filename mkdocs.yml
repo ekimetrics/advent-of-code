@@ -1,5 +1,5 @@
-site_name: 'advent'
-site_description: 'advent library'
+site_name: 'Ekimetrics - Advent Of Code '
+site_description: 'Daily coding challenges'
 site_author: 'Ekimetrics'
 site_url: "https://ekimetrics.com/"
 edit_uri: ""
@@ -19,8 +19,8 @@ markdown_extensions:
       custom_checkbox: true
   - toc:
       permalink: true
-repo_name: 'advent'
-repo_url: 'https://bitbucket.org/ekimetrics/'
+repo_name: 'advent-of-code'
+repo_url: 'https://github.com/ekimetrics/'
 
 extra_css:
   - ./stylesheets/extra.css

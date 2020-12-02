@@ -1,0 +1,12 @@
+# Usual libraries
+pandas
+numpy
+
+
+# Starter package libraries
+cookiecutter
+mkdocs
+mkdocs-material
+mkdocstrings
+pytest
+jinja2

@@ -1,0 +1,42 @@
+site_name: 'advent'
+site_description: 'advent library'
+site_author: 'Ekimetrics'
+site_url: "https://ekimetrics.com/"
+edit_uri: ""
+theme:
+  logo: assets/logo.png
+  name: 'material'
+  features:
+    - tabs
+    - instant
+markdown_extensions:
+  - admonition
+  - codehilite
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.arithmatex
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - toc:
+      permalink: true
+repo_name: 'advent'
+repo_url: 'https://bitbucket.org/ekimetrics/'
+
+extra_css:
+  - ./stylesheets/extra.css
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML
+
+nav:
+  - Home: 
+    - index.md
+  - Challenges:
+    - Day 2: tutorials/day2.ipynb
+
+plugins:
+  - search
+  - mknotebooks:
+      execute: false
+      enable_default_jupyter_cell_styling: false
+      enable_default_pandas_dataframe_styling: true

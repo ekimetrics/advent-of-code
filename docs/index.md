@@ -8,5 +8,5 @@ It will also highlight **some programming best practices and tricks**
     Coding challenges are drawn from the awesome platform [Advent Of Code](https://adventofcode.com/).<br>
     This website is merely a wrapper of our open source solutions and tricks
 
-➡ Go to the [challenges](/tutorials) tab to get started
+➡ Go to the [challenges](/advent-of-code/tutorials/day2) tab to get started
 

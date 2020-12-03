@@ -7,6 +7,10 @@ numpy
 cookiecutter
 mkdocs
 mkdocs-material
-mkdocstrings
+mkdocstrings==0.11.2
+mknotebooks==0.3.5
+mkdocs-material==5.1.0
+mkdocs-minify-plugin==0.2.1
+mkdocs-material-extensions
 pytest
 jinja2

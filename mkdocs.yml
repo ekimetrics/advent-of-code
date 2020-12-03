@@ -1,4 +1,4 @@
-site_name: 'Ekimetrics - Advent Of Code '
+site_name: 'Ekimetrics - Advent Of Code'
 site_description: 'Daily coding challenges'
 site_author: 'Ekimetrics'
 site_url: "https://ekimetrics.com/"
@@ -33,6 +33,7 @@ nav:
     - index.md
   - Challenges:
     - Day 2: tutorials/day2.ipynb
+    - Day 3: tutorials/day3.ipynb
 
 plugins:
   - search

@@ -5,8 +5,7 @@ numpy
 
 # Starter package libraries
 cookiecutter
-mkdocs
-mkdocs-material
+mkdocs==1.1
 mkdocstrings==0.11.2
 mknotebooks==0.3.5
 mkdocs-material==5.1.0

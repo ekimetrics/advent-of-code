@@ -25,6 +25,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      # Install mkdocstrings (temporary fix due to bug on mkdocstrings)
+      - name: Install mkdocstrings
+        run: pip install mkdocstrings
+
       # Runs a single command using the runners shell
       - name: Install requirements
         run: pip install -r requirements.txt

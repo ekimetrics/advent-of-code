@@ -375,6 +375,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#solution-2" class="md-nav__link">
+    Solution 2
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -469,6 +476,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution-2" class="md-nav__link">
+    Solution 2
+  </a>
   
 </li>
       
@@ -838,6 +852,57 @@ You can use the Counter algorithms, it's native to Python, you have nothing to i
 </div>
 
 </div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="solution-2">Solution 2<a class="headerlink" href="#solution-2" title="Permanent link">&para;</a></h2>
+<p></div>
+</div></p>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">valid_passwords</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">valid_passwords_part_two</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./day-2-input.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>
+        <span class="c1"># Parse line with regular expression</span>
+        <span class="n">n_min</span><span class="p">,</span> <span class="n">n_max</span><span class="p">,</span> <span class="n">letter</span><span class="p">,</span> <span class="n">password</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d+)-(\d+) (\w): (\w+)&quot;</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+        <span class="c1"># Part one</span>
+        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_min</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">letter</span><span class="p">,</span> <span class="n">password</span><span class="p">))</span> <span class="o">&lt;=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_max</span><span class="p">):</span>
+            <span class="n">valid_passwords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+        <span class="c1"># Part two, using Python&#39;s XOR operator</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">password</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">n_min</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">letter</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">password</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">n_max</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">letter</span><span class="p">):</span>
+            <span class="n">valid_passwords_part_two</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Answer to part one</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">valid_passwords</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Answer to part two</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">valid_passwords_part_two</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+
 </div>
                 
               

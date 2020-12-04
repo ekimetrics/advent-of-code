@@ -34,6 +34,7 @@ nav:
   - Challenges:
     - Day 2: tutorials/day2.ipynb
     - Day 3: tutorials/day3.ipynb
+    - Day 4: tutorials/day4.ipynb
 
 plugins:
   - search

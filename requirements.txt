@@ -11,5 +11,3 @@ mkdocs-minify-plugin==0.3.0
 mkdocstrings==0.13.6
 mknotebooks==0.6.2
 nbconvert==5.6.1
-pytest
-jinja2

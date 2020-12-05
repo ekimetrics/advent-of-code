@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://ekimetrics.com/tutorials/day4/">
+        <link rel="canonical" href="https://ekimetrics.com/tutorials/day5/">
       
       
         <meta name="author" content="Ekimetrics">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Day 4 - Ekimetrics - Advent Of Code</title>
+        <title>Day 5 - Ekimetrics - Advent Of Code</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#day-4-passport-processing" class="md-skip">
+        <a href="#day-5-binary-boarding" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Day 4
+              Day 5
             
           </span>
         </div>
@@ -318,6 +318,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../day4/" class="md-nav__link">
+      Day 4
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -329,12 +341,12 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Day 4
+        Day 5
         <span class="md-nav__icon md-icon"></span>
       </label>
     
     <a href="./" class="md-nav__link md-nav__link--active">
-      Day 4
+      Day 5
     </a>
     
       
@@ -380,15 +392,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#writing-the-final-solution-function" class="md-nav__link">
-    Writing the final solution function
+  <a href="#solving-the-final-solution" class="md-nav__link">
+    Solving the final solution
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#solving-the-final-solution" class="md-nav__link">
-    Solving the final solution
+  <a href="#solving-part-2" class="md-nav__link">
+    Solving part 2
   </a>
   
 </li>
@@ -402,18 +414,6 @@
   
 </nav>
     
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../day5/" class="md-nav__link">
-      Day 5
-    </a>
   </li>
 
         
@@ -475,15 +475,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#writing-the-final-solution-function" class="md-nav__link">
-    Writing the final solution function
+  <a href="#solving-the-final-solution" class="md-nav__link">
+    Solving the final solution
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#solving-the-final-solution" class="md-nav__link">
-    Solving the final solution
+  <a href="#solving-part-2" class="md-nav__link">
+    Solving part 2
   </a>
   
 </li>
@@ -536,54 +536,48 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="day-4-passport-processing">Day 4: Passport Processing<a class="headerlink" href="#day-4-passport-processing" title="Permanent link">&para;</a></h1>
+<h1 id="day-5-binary-boarding">Day 5: Binary Boarding<a class="headerlink" href="#day-5-binary-boarding" title="Permanent link">&para;</a></h1>
 <h2 id="problem">Problem<a class="headerlink" href="#problem" title="Permanent link">&para;</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-You arrive at the airport only to realize that you grabbed your North Pole Credentials instead of your passport. While these documents are extremely similar, North Pole Credentials aren't issued by a country and therefore aren't actually valid documentation for travel in most of the world.<br>
+You board your plane only to discover a new problem: you dropped your boarding pass! You aren't sure which seat is yours, and all of the flight attendants are busy with the flood of people that suddenly made it through passport control.<br>
 
-It seems like you're not the only one having problems, though; a very long line has formed for the automatic passport scanners, and the delay could upset your travel itinerary.<br>
+You write a quick program to use your phone's camera to scan all of the nearby boarding passes (your puzzle input); perhaps you can find your seat through process of elimination.<br>
 
-Due to some questionable network security, you realize you might be able to solve both of these problems at the same time.<br>
+Instead of zones or groups, this airline uses binary space partitioning to seat people. A seat might be specified like FBFBBFFRLR, where F means "front", B means "back", L means "left", and R means "right".<br>
 
-The automatic passport scanners are slow because they're having trouble detecting which passports have all required fields. The expected fields are as follows:
-<div class="highlight"><pre><span></span><code>byr (Birth Year)
-iyr (Issue Year)
-eyr (Expiration Year)
-hgt (Height)
-hcl (Hair Color)
-ecl (Eye Color)
-pid (Passport ID)
-cid (Country ID)
+The first 7 characters will either be F or B; these specify exactly one of the 128 rows on the plane (numbered 0 through 127). Each letter tells you which half of a region the given seat is in. Start with the whole list of rows; the first letter indicates whether the seat is in the front (0 through 63) or the back (64 through 127). The next letter indicates which half of that region the seat is in, and so on until you're left with exactly one row.<br>
+
+For example, consider just the first seven characters of FBFBBFFRLR:<br>
+<div class="highlight"><pre><span></span><code>Start by considering the whole range, rows 0 through 127.
+F means to take the lower half, keeping rows 0 through 63.
+B means to take the upper half, keeping rows 32 through 63.
+F means to take the lower half, keeping rows 32 through 47.
+B means to take the upper half, keeping rows 40 through 47.
+B keeps rows 44 through 47.
+F keeps rows 44 through 45.
+The final F keeps the lower of the two, row 44.
+The last three characters will be either L or R; these specify exactly one of the 8 columns of seats on the plane (numbered 0 through 7). The same process as above proceeds again, this time with only three steps. L means to keep the lower half, while R means to keep the upper half.
 </code></pre></div>
-Passport data is validated in batch files (your puzzle input). Each passport is represented as a sequence of key:value pairs separated by spaces or newlines. Passports are separated by blank lines.
 
-Here is an example batch file containing four passports:
-<div class="highlight"><pre><span></span><code>ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
-byr:1937 iyr:2017 cid:147 hgt:183cm
-
-iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884
-hcl:#cfa07d byr:1929
-
-hcl:#ae17e1 iyr:2013
-eyr:2024
-ecl:brn pid:760753108 byr:1931
-hgt:179cm
-
-hcl:#cfa07d eyr:2025 pid:166559648
-iyr:2011 ecl:brn hgt:59in
+For example, consider just the last 3 characters of FBFBBFFRLR:
+<div class="highlight"><pre><span></span><code>Start by considering the whole range, columns 0 through 7.
+R means to take the upper half, keeping columns 4 through 7.
+L means to take the lower half, keeping columns 4 through 5.
+The final R keeps the upper of the two, column 5.
+So, decoding FBFBBFFRLR reveals that it is the seat at row 44, column 5.
 </code></pre></div>
-The first passport is valid - all eight fields are present. The second passport is invalid - it is missing hgt (the Height field).<br>
+Every seat also has a unique seat ID: multiply the row by 8, then add the column. In this example, the seat has ID 44 * 8 + 5 = 357.<br>
 
-The third passport is interesting; the only missing field is cid, so it looks like data from North Pole Credentials, not a passport at all! Surely, nobody would mind if you made the system temporarily ignore missing cid fields. Treat this "passport" as valid.<br>
+Here are some other boarding passes:
+<div class="highlight"><pre><span></span><code>BFFFBBFRRR: row 70, column 7, seat ID 567.
+FFFBBBFRRR: row 14, column 7, seat ID 119.
+BBFFBBFRLL: row 102, column 4, seat ID 820.
+</code></pre></div>
+As a sanity check, look through your list of boarding passes. What is the highest seat ID on a boarding pass?
 
-The fourth passport is missing two fields, cid and byr. Missing cid is fine, but missing any other field is not, so this passport is invalid.<br>
-
-According to the above rules, your improved system would report 2 valid passports.<br>
-
-Count the number of valid passports - those that have all required fields. Treat cid as optional. In your batch file, how many passports are valid?<br>
 </div>
-<p>https://adventofcode.com/2020/day/4</p>
+<p>https://adventofcode.com/2020/day/5</p>
 </div>
 </div>
 </div>
@@ -607,17 +601,8 @@ Count the number of valid passports - those that have all required fields. Treat
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Here we will python <code>sets</code> to find if we have all the keys<br>
-It's an accelerated way to compute the difference between two list of values and avoiding a costly double for loop</p>
+<p>Tip of the day will be to use recursive functions !</p>
 </div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-</code></pre></div>
-
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
@@ -630,35 +615,20 @@ It's an accelerated way to compute the difference between two list of values and
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">ecl:gry pid:860033327 eyr:2020 hcl:#fffffd</span>
-<span class="s2">byr:1937 iyr:2017 cid:147 hgt:183cm</span>
-
-<span class="s2">iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884</span>
-<span class="s2">hcl:#cfa07d byr:1929</span>
-
-<span class="s2">hcl:#ae17e1 iyr:2013</span>
-<span class="s2">eyr:2024</span>
-<span class="s2">ecl:brn pid:760753108 byr:1931</span>
-<span class="s2">hgt:179cm</span>
-
-<span class="s2">hcl:#cfa07d eyr:2025 pid:166559648</span>
-<span class="s2">iyr:2011 ecl:brn hgt:59in</span>
-<span class="s2">&quot;&quot;&quot;</span>
-<span class="n">text_array</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">text_array</span>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;FBFBBFFRLR&quot;</span>
+<span class="n">row</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">column</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">7</span><span class="p">:]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">column</span><span class="p">)</span>
 </code></pre></div>
 
 </div>
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="output_text output_subarea output_execute_result">
+<div class="output_subarea output_stream output_stdout output_text">
 <pre>
-<code>[&#39;ecl:gry pid:860033327 eyr:2020 hcl:#fffffd\nbyr:1937 iyr:2017 cid:147 hgt:183cm&#39;,
- &#39;iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884\nhcl:#cfa07d byr:1929&#39;,
- &#39;hcl:#ae17e1 iyr:2013\neyr:2024\necl:brn pid:760753108 byr:1931\nhgt:179cm&#39;,
- &#39;hcl:#cfa07d eyr:2025 pid:166559648\niyr:2011 ecl:brn hgt:59in&#39;]</code>
+<code>FBFBBFF RLR
+</code>
 </pre>
 </div>
 </div>
@@ -668,15 +638,32 @@ It's an accelerated way to compute the difference between two list of values and
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">passport_to_dict</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="n">values</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
-    <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
-        <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
-        <span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
-    <span class="k">return</span> <span class="n">d</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">recursive_binary_traverse</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span><span class="n">min_value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">max_value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">low_value</span> <span class="o">=</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
 
-<span class="n">passports</span> <span class="o">=</span> <span class="p">[</span><span class="n">passport_to_dict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">text_array</span><span class="p">]</span>
+    <span class="c1"># Stopping condition for recursive functions</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+
+        <span class="c1"># Initialization</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">sequence</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">min_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">min_value</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">max_value</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="nb">len</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+
+        <span class="c1"># Find the number exactly in the middle</span>
+        <span class="n">half</span> <span class="o">=</span> <span class="n">min_value</span> <span class="o">+</span> <span class="p">(</span><span class="n">max_value</span> <span class="o">-</span> <span class="n">min_value</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+
+        <span class="c1"># If verbose print value (for debugging)</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="n">min_value</span><span class="p">,</span><span class="n">max_value</span><span class="p">,</span><span class="n">half</span><span class="p">)</span>
+
+        <span class="c1"># Use recursive function to continue traversing</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="n">low_value</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">recursive_binary_traverse</span><span class="p">(</span><span class="n">sequence</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span><span class="n">min_value</span><span class="p">,</span><span class="n">half</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span><span class="n">low_value</span><span class="p">,</span><span class="n">verbose</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">recursive_binary_traverse</span><span class="p">(</span><span class="n">sequence</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span><span class="n">half</span><span class="p">,</span><span class="n">max_value</span><span class="p">,</span><span class="n">low_value</span><span class="p">,</span><span class="n">verbose</span><span class="p">)</span>
+
+    <span class="c1"># Return final value at the end of the traverse</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">min_value</span>
 </code></pre></div>
 
 </div>
@@ -684,8 +671,77 @@ It's an accelerated way to compute the difference between two list of values and
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><span class="n">mandatory_keys</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;byr&quot;</span><span class="p">,</span><span class="s2">&quot;iyr&quot;</span><span class="p">,</span><span class="s2">&quot;eyr&quot;</span><span class="p">,</span><span class="s2">&quot;hgt&quot;</span><span class="p">,</span><span class="s2">&quot;hcl&quot;</span><span class="p">,</span><span class="s2">&quot;ecl&quot;</span><span class="p">,</span><span class="s2">&quot;pid&quot;</span><span class="p">]</span>
-<span class="n">optional_keys</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;cid&quot;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="n">recursive_binary_traverse</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>F 0 127 64
+B 0 63 32
+F 32 63 48
+B 32 47 40
+B 40 47 44
+F 44 47 46
+F 44 45 45
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>44</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">recursive_binary_traverse</span><span class="p">(</span><span class="n">column</span><span class="p">,</span><span class="n">low_value</span> <span class="o">=</span> <span class="s2">&quot;L&quot;</span><span class="p">,</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>R 0 7 4
+L 4 7 6
+R 4 5 5
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>5</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">double_traverse</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+
+    <span class="n">row_sequence</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:</span><span class="mi">7</span><span class="p">]</span>
+    <span class="n">column_sequence</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">7</span><span class="p">:]</span>
+
+    <span class="n">row_id</span> <span class="o">=</span> <span class="n">recursive_binary_traverse</span><span class="p">(</span><span class="n">row_sequence</span><span class="p">,</span><span class="n">low_value</span> <span class="o">=</span> <span class="s2">&quot;F&quot;</span><span class="p">)</span>
+    <span class="n">column_id</span> <span class="o">=</span> <span class="n">recursive_binary_traverse</span><span class="p">(</span><span class="n">column_sequence</span><span class="p">,</span><span class="n">low_value</span> <span class="o">=</span> <span class="s2">&quot;L&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">row_id</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">+</span> <span class="n">column_id</span>
 </code></pre></div>
 
 </div>
@@ -693,28 +749,7 @@ It's an accelerated way to compute the difference between two list of values and
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">is_passport_valid</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="n">mandatory_keys</span><span class="p">)</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
-</code></pre></div>
-
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">count_valid</span><span class="p">(</span><span class="n">passports</span><span class="p">):</span>
-    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">passport</span> <span class="ow">in</span> <span class="n">passports</span><span class="p">:</span>
-        <span class="n">count</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">is_passport_valid</span><span class="p">(</span><span class="n">passport</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">count</span>
-</code></pre></div>
-
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="highlight"><pre><span></span><code><span class="n">count_valid</span><span class="p">(</span><span class="n">passports</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">double_traverse</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </code></pre></div>
 
 </div>
@@ -723,32 +758,11 @@ It's an accelerated way to compute the difference between two list of values and
 <div class="output_area">
 <div class="output_text output_subarea output_execute_result">
 <pre>
-<code>2</code>
+<code>357</code>
 </pre>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="writing-the-final-solution-function">Writing the final solution function<a class="headerlink" href="#writing-the-final-solution-function" title="Permanent link">&para;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">solve_problem</span><span class="p">(</span><span class="n">text_input</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Solve the day 4 problem using other helper functions</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">text_array</span> <span class="o">=</span> <span class="n">text_input</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">passports</span> <span class="o">=</span> <span class="p">[</span><span class="n">passport_to_dict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">text_array</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">count_valid</span><span class="p">(</span><span class="n">passports</span><span class="p">)</span>
-</code></pre></div>
-
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
@@ -761,8 +775,8 @@ It's an accelerated way to compute the difference between two list of values and
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><span class="n">text_input</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;inputs/day4.txt&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">text_input</span><span class="p">[:</span><span class="mi">500</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><span class="n">text_input</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;inputs/day5.txt&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text_input</span><span class="p">[:</span><span class="mi">50</span><span class="p">])</span>
 </code></pre></div>
 
 </div>
@@ -771,27 +785,11 @@ It's an accelerated way to compute the difference between two list of values and
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
-<code>iyr:2015 cid:189 ecl:oth byr:1947 hcl:#6c4ab1 eyr:2026
-hgt:174cm
-pid:526744288
-
-pid:688706448 iyr:2017 hgt:162cm cid:174 ecl:grn byr:1943 hcl:#808e9e eyr:2025
-
-ecl:oth hcl:#733820 cid:124 pid:111220591
-iyr:2019 eyr:2001
-byr:1933 hgt:159in
-
-pid:812929897 hgt:159cm hcl:#fffffd byr:1942 iyr:2026 cid:291
-ecl:oth
-eyr:2024
-
-cid:83 pid:524032739 iyr:2013 ecl:amb byr:1974
-hgt:191cm hcl:#ceb3a1 eyr:2028
-
-ecl:gry hcl:eefed5 pid:88405792 hgt:183cm cid:221 byr:1963 eyr:2029
-
-pid:777881168 ecl:grn
-hgt:181cm 
+<code>BFBBFFBRRL
+BFBFFFFRLL
+FBFBFFBRRR
+FFBBBFBRLL
+BBBFBF
 </code>
 </pre>
 </div>
@@ -802,7 +800,8 @@ hgt:181cm
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><span class="n">solve_problem</span><span class="p">(</span><span class="n">text_input</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">boarding_passes</span> <span class="o">=</span> <span class="n">text_input</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">boarding_passes</span><span class="p">)</span>
 </code></pre></div>
 
 </div>
@@ -811,7 +810,7 @@ hgt:181cm
 <div class="output_area">
 <div class="output_text output_subarea output_execute_result">
 <pre>
-<code>264</code>
+<code>897</code>
 </pre>
 </div>
 </div>
@@ -821,9 +820,161 @@ hgt:181cm
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code>
+<div class="highlight"><pre><span></span><code><span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">double_traverse</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">boarding_passes</span><span class="p">]</span>
 </code></pre></div>
 
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="nb">max</span><span class="p">(</span><span class="n">ids</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>965</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="solving-part-2">Solving part 2<a class="headerlink" href="#solving-part-2" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+Ding! The "fasten seat belt" signs have turned on. Time to find your seat.<br>
+
+It's a completely full flight, so your seat should be the only missing boarding pass in your list. However, there's a catch: some of the seats at the very front and back of the plane don't exist on this aircraft, so they'll be missing from your list as well.<br>
+
+Your seat wasn't at the very front or back, though; the seats with IDs +1 and -1 from yours will be in your list.<br>
+
+What is the ID of your seat?<br>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">sorted_ids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">ids</span><span class="p">))</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We could use loops and list, let's rather use numpy functions</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sorted_ids</span><span class="p">)</span>
+<span class="n">diff</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>array([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">missing_value_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">diff</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">missing_value_index</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>455</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">seat_id</span> <span class="o">=</span> <span class="n">sorted_ids</span><span class="p">[</span><span class="n">missing_value_index</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">seat_id</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>524</code>
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
                 
@@ -844,7 +995,7 @@ hgt:181cm
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../day3/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../day4/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -853,25 +1004,11 @@ hgt:181cm
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Day 3
+                Day 4
               </div>
             </div>
           </a>
         
-        
-          <a href="../day5/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                Day 5
-              </div>
-            </div>
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-            </div>
-          </a>
         
       </nav>
     </div>

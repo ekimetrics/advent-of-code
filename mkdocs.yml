@@ -5,16 +5,21 @@ site_url: "https://ekimetrics.com/"
 edit_uri: ""
 theme:
   logo: assets/logo.png
+  favicon: assets/favicon.png
   name: 'material'
+  icon:
+    repo: fontawesome/brands/github
   features:
-    - tabs
-    - instant
+    - navigation.tabs
+    - navigation.instant
+    - navigation.sections
 markdown_extensions:
   - admonition
   - codehilite
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.arithmatex
+  - pymdownx.tabbed
   - pymdownx.tasklist:
       custom_checkbox: true
   - toc:
@@ -35,6 +40,7 @@ nav:
     - Day 2: tutorials/day2.ipynb
     - Day 3: tutorials/day3.ipynb
     - Day 4: tutorials/day4.ipynb
+    - Day 5: tutorials/day5.ipynb
 
 plugins:
   - search

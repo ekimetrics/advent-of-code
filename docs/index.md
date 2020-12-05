@@ -1,4 +1,4 @@
-# 🎄🎄🎄 Advent of code
+# 🎄 Advent of code
 ![](assets/calendar.jpg)
 
 You will find in this website **daily coding challenges** and proposed solutions. <br>

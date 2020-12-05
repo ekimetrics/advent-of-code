@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://ekimetrics.com/tutorials/day2/">
+        <link rel="canonical" href="https://ekimetrics.com/tutorials/day4/">
       
       
         <meta name="author" content="Ekimetrics">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Day 2 - Ekimetrics - Advent Of Code</title>
+        <title>Day 4 - Ekimetrics - Advent Of Code</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#day-2-password-philosophy" class="md-skip">
+        <a href="#day-4-passport-processing" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Day 2
+              Day 4
             
           </span>
         </div>
@@ -254,6 +254,30 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../day2/" class="md-nav__link">
+      Day 2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../day3/" class="md-nav__link">
+      Day 3
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -265,12 +289,12 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Day 2
+        Day 4
         <span class="md-nav__icon md-icon"></span>
       </label>
     
     <a href="./" class="md-nav__link md-nav__link--active">
-      Day 2
+      Day 4
     </a>
     
       
@@ -309,15 +333,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#writing-the-solution-functions" class="md-nav__link">
-    Writing the solution functions
+  <a href="#solving-the-example" class="md-nav__link">
+    Solving the example
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#solving-the-example" class="md-nav__link">
-    Solving the example
+  <a href="#writing-the-final-solution-function" class="md-nav__link">
+    Writing the final solution function
   </a>
   
 </li>
@@ -334,41 +358,10 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#solution-2" class="md-nav__link">
-    Solution 2
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
     
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../day3/" class="md-nav__link">
-      Day 3
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../day4/" class="md-nav__link">
-      Day 4
-    </a>
   </li>
 
         
@@ -423,15 +416,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#writing-the-solution-functions" class="md-nav__link">
-    Writing the solution functions
+  <a href="#solving-the-example" class="md-nav__link">
+    Solving the example
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#solving-the-example" class="md-nav__link">
-    Solving the example
+  <a href="#writing-the-final-solution-function" class="md-nav__link">
+    Writing the final solution function
   </a>
   
 </li>
@@ -445,13 +438,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#solution-2" class="md-nav__link">
-    Solution 2
-  </a>
   
 </li>
       
@@ -498,29 +484,54 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="day-2-password-philosophy">Day 2: Password Philosophy<a class="headerlink" href="#day-2-password-philosophy" title="Permanent link">&para;</a></h1>
+<h1 id="day-4-passport-processing">Day 4: Passport Processing<a class="headerlink" href="#day-4-passport-processing" title="Permanent link">&para;</a></h1>
 <h2 id="problem">Problem<a class="headerlink" href="#problem" title="Permanent link">&para;</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<br>Your flight departs in a few days from the coastal airport; the easiest way down to the coast from here is via toboggan.<br>
+You arrive at the airport only to realize that you grabbed your North Pole Credentials instead of your passport. While these documents are extremely similar, North Pole Credentials aren't issued by a country and therefore aren't actually valid documentation for travel in most of the world.<br>
 
-The shopkeeper at the North Pole Toboggan Rental Shop is having a bad day. "Something's wrong with our computers; we can't log in!" You ask if you can take a look.<br>
+It seems like you're not the only one having problems, though; a very long line has formed for the automatic passport scanners, and the delay could upset your travel itinerary.<br>
 
-Their password database seems to be a little corrupted: some of the passwords wouldn't have been allowed by the Official Toboggan Corporate Policy that was in effect when they were chosen.<br>
+Due to some questionable network security, you realize you might be able to solve both of these problems at the same time.<br>
 
-To try to debug the problem, they have created a list (your puzzle input) of passwords (according to the corrupted database) and the corporate policy when that password was set.<br>
-
-For example, suppose you have the following list:
-<div class="highlight"><pre><span></span><code>1-3 a: abcde
-1-3 b: cdefg
-2-9 c: ccccccccc
+The automatic passport scanners are slow because they're having trouble detecting which passports have all required fields. The expected fields are as follows:
+<div class="highlight"><pre><span></span><code>byr (Birth Year)
+iyr (Issue Year)
+eyr (Expiration Year)
+hgt (Height)
+hcl (Hair Color)
+ecl (Eye Color)
+pid (Passport ID)
+cid (Country ID)
 </code></pre></div>
-Each line gives the password policy and then the password. The password policy indicates the lowest and highest number of times a given letter must appear for the password to be valid. For example, 1-3 a means that the password must contain a at least 1 time and at most 3 times.<br>
+Passport data is validated in batch files (your puzzle input). Each passport is represented as a sequence of key:value pairs separated by spaces or newlines. Passports are separated by blank lines.
 
-In the above example, 2 passwords are valid. The middle password, cdefg, is not; it contains no instances of b, but needs at least 1. The first and third passwords are valid: they contain one a or nine c, both within the limits of their respective policies.<br>
-How many passwords are valid according to their policies?<br>
+Here is an example batch file containing four passports:
+<div class="highlight"><pre><span></span><code>ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
+byr:1937 iyr:2017 cid:147 hgt:183cm
+
+iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884
+hcl:#cfa07d byr:1929
+
+hcl:#ae17e1 iyr:2013
+eyr:2024
+ecl:brn pid:760753108 byr:1931
+hgt:179cm
+
+hcl:#cfa07d eyr:2025 pid:166559648
+iyr:2011 ecl:brn hgt:59in
+</code></pre></div>
+The first passport is valid - all eight fields are present. The second passport is invalid - it is missing hgt (the Height field).<br>
+
+The third passport is interesting; the only missing field is cid, so it looks like data from North Pole Credentials, not a passport at all! Surely, nobody would mind if you made the system temporarily ignore missing cid fields. Treat this "passport" as valid.<br>
+
+The fourth passport is missing two fields, cid and byr. Missing cid is fine, but missing any other field is not, so this passport is invalid.<br>
+
+According to the above rules, your improved system would report 2 valid passports.<br>
+
+Count the number of valid passports - those that have all required fields. Treat cid as optional. In your batch file, how many passports are valid?<br>
 </div>
-<p>https://adventofcode.com/2020/day/2</p>
+<p>https://adventofcode.com/2020/day/3</p>
 </div>
 </div>
 </div>
@@ -541,109 +552,16 @@ How many passwords are valid according to their policies?<br>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>You can use the Counter algorithms, it's native to Python, you have nothing to install </p>
+<p>You can use numpy here to avoid doing loops.<br>
+Using For loops here would work, but it would not be scalable when the size of the grid grows. <br>
+If you apply only numpy vectorization operations, it's a little more complicated but you are almost instantly scalable.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
-</code></pre></div>
-
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="highlight"><pre><span></span><code><span class="n">Counter</span><span class="p">(</span><span class="s2">&quot;aabebeheucuefh&quot;</span><span class="p">)</span>
-</code></pre></div>
-
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="output_text output_subarea output_execute_result">
-<pre>
-<code>Counter({&#39;a&#39;: 2, &#39;b&#39;: 2, &#39;e&#39;: 4, &#39;h&#39;: 2, &#39;u&#39;: 2, &#39;c&#39;: 1, &#39;f&#39;: 1})</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="highlight"><pre><span></span><code><span class="n">Counter</span><span class="p">(</span><span class="s2">&quot;aabebeheucuefh&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-</code></pre></div>
-
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="output_text output_subarea output_execute_result">
-<pre>
-<code>2</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="highlight"><pre><span></span><code><span class="n">Counter</span><span class="p">(</span><span class="s2">&quot;aabebeheucuefh&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-</code></pre></div>
-
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="output_text output_subarea output_execute_result">
-<pre>
-<code>0</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="writing-the-solution-functions">Writing the solution functions<a class="headerlink" href="#writing-the-solution-functions" title="Permanent link">&para;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">split_policy_password</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Splits input strings with policy and password provided by the platform</span>
-<span class="sd">    Returns policy and password in a tuple</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">policy</span><span class="p">,</span><span class="n">password</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">policy</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span><span class="n">password</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-
-
-<span class="k">def</span> <span class="nf">is_valid</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-
-    <span class="n">policy</span><span class="p">,</span><span class="n">password</span> <span class="o">=</span> <span class="n">split_policy_password</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-    <span class="n">minmax</span><span class="p">,</span><span class="n">letter</span> <span class="o">=</span> <span class="n">policy</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
-    <span class="n">min_value</span><span class="p">,</span><span class="n">max_value</span> <span class="o">=</span> <span class="n">minmax</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
-    <span class="n">min_value</span><span class="p">,</span><span class="n">max_value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">min_value</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">max_value</span><span class="p">)</span>
-
-    <span class="n">count</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
-    <span class="k">return</span>  <span class="n">min_value</span> <span class="o">&lt;=</span> <span class="n">count</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">letter</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">max_value</span>
-
-
-<span class="k">def</span> <span class="nf">count_valids</span><span class="p">(</span><span class="n">text_input</span><span class="p">):</span>
-    <span class="n">examples</span> <span class="o">=</span> <span class="n">text_input</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">valids</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">examples</span> <span class="k">if</span> <span class="n">is_valid</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span>
-    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">valids</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </code></pre></div>
 
 </div>
@@ -658,33 +576,35 @@ How many passwords are valid according to their policies?<br>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><span class="n">text_input</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">1-3 a: abcde</span>
-<span class="s2">1-3 b: cdefg</span>
-<span class="s2">2-9 c: ccccccccc</span>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">ecl:gry pid:860033327 eyr:2020 hcl:#fffffd</span>
+<span class="s2">byr:1937 iyr:2017 cid:147 hgt:183cm</span>
+
+<span class="s2">iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884</span>
+<span class="s2">hcl:#cfa07d byr:1929</span>
+
+<span class="s2">hcl:#ae17e1 iyr:2013</span>
+<span class="s2">eyr:2024</span>
+<span class="s2">ecl:brn pid:760753108 byr:1931</span>
+<span class="s2">hgt:179cm</span>
+
+<span class="s2">hcl:#cfa07d eyr:2025 pid:166559648</span>
+<span class="s2">iyr:2011 ecl:brn hgt:59in</span>
 <span class="s2">&quot;&quot;&quot;</span>
-<span class="n">examples</span> <span class="o">=</span> <span class="n">text_input</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-</code></pre></div>
-
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">examples</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="s2">&quot; - &quot;</span><span class="p">,</span><span class="n">is_valid</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">text_array</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">text_array</span>
 </code></pre></div>
 
 </div>
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="output_subarea output_stream output_stdout output_text">
+<div class="output_text output_subarea output_execute_result">
 <pre>
-<code>1-3 a: abcde  -  True
-1-3 b: cdefg  -  False
-2-9 c: ccccccccc  -  True
-</code>
+<code>[&#39;ecl:gry pid:860033327 eyr:2020 hcl:#fffffd\nbyr:1937 iyr:2017 cid:147 hgt:183cm&#39;,
+ &#39;iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884\nhcl:#cfa07d byr:1929&#39;,
+ &#39;hcl:#ae17e1 iyr:2013\neyr:2024\necl:brn pid:760753108 byr:1931\nhgt:179cm&#39;,
+ &#39;hcl:#cfa07d eyr:2025 pid:166559648\niyr:2011 ecl:brn hgt:59in&#39;]</code>
 </pre>
 </div>
 </div>
@@ -694,7 +614,53 @@ How many passwords are valid according to their policies?<br>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><span class="n">count_valids</span><span class="p">(</span><span class="n">text_input</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">passport_to_dict</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+        <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+        <span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+    <span class="k">return</span> <span class="n">d</span>
+
+<span class="n">passports</span> <span class="o">=</span> <span class="p">[</span><span class="n">passport_to_dict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">text_array</span><span class="p">]</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">mandatory_keys</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;byr&quot;</span><span class="p">,</span><span class="s2">&quot;iyr&quot;</span><span class="p">,</span><span class="s2">&quot;eyr&quot;</span><span class="p">,</span><span class="s2">&quot;hgt&quot;</span><span class="p">,</span><span class="s2">&quot;hcl&quot;</span><span class="p">,</span><span class="s2">&quot;ecl&quot;</span><span class="p">,</span><span class="s2">&quot;pid&quot;</span><span class="p">]</span>
+<span class="n">optional_keys</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;cid&quot;</span><span class="p">]</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">is_passport_valid</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="n">mandatory_keys</span><span class="p">)</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">count_valid</span><span class="p">(</span><span class="n">passports</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">passport</span> <span class="ow">in</span> <span class="n">passports</span><span class="p">:</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">is_passport_valid</span><span class="p">(</span><span class="n">passport</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">count</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">count_valid</span><span class="p">(</span><span class="n">passports</span><span class="p">)</span>
 </code></pre></div>
 
 </div>
@@ -713,6 +679,27 @@ How many passwords are valid according to their policies?<br>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="writing-the-final-solution-function">Writing the final solution function<a class="headerlink" href="#writing-the-final-solution-function" title="Permanent link">&para;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">solve_problem</span><span class="p">(</span><span class="n">text_input</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Solve the day 4 problem using other helper functions</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">text_array</span> <span class="o">=</span> <span class="n">text_input</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">passports</span> <span class="o">=</span> <span class="p">[</span><span class="n">passport_to_dict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">text_array</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">count_valid</span><span class="p">(</span><span class="n">passports</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="solving-the-final-solution">Solving the final solution<a class="headerlink" href="#solving-the-final-solution" title="Permanent link">&para;</a></h3>
 </div>
 </div>
@@ -720,7 +707,7 @@ How many passwords are valid according to their policies?<br>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><span class="n">text_input</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;inputs/day2.txt&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">text_input</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;inputs/day4.txt&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">text_input</span><span class="p">[:</span><span class="mi">500</span><span class="p">])</span>
 </code></pre></div>
 
@@ -730,32 +717,27 @@ How many passwords are valid according to their policies?<br>
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
-<code>3-11 z: zzzzzdzzzzlzz
-3-7 x: xjxbgpxxgtx
-3-4 v: vvmv
-3-5 t: tgkfq
-9-10 j: jjjjjjjjqjjjj
-5-7 r: rnhrhrr
-2-6 n: gnntnnsnnqjsbrn
-3-4 g: vrggfvxsgmggkgsm
-1-4 c: brccqr
-1-5 h: hhhzzvcdhhhhhhhh
-4-11 c: ncnqbzlkckc
-1-13 q: hqqqqqqqqqqqlq
-8-9 h: hhhhhhxxkh
-3-9 b: bbbbsfbbc
-3-8 k: zfqzkzgk
-3-9 k: wjkwhnkkfvxk
-3-11 v: vgkvvcjvvvv
-5-6 l: llllhr
-9-11 z: lzzzgzzmzzdzzz
-13-16 w: wwlwwwwlwwxwwfwf
-8-11 r: rrrrrrrrrrcrdrr
-1-9 v: mlvvvxnwrwvv
-4-6 z: mzzzzz
-3-4 s: svsj
-8-11 w: wwwwwwwjwwww
-10-13 r: drrrrzhmxfjdrtf
+<code>iyr:2015 cid:189 ecl:oth byr:1947 hcl:#6c4ab1 eyr:2026
+hgt:174cm
+pid:526744288
+
+pid:688706448 iyr:2017 hgt:162cm cid:174 ecl:grn byr:1943 hcl:#808e9e eyr:2025
+
+ecl:oth hcl:#733820 cid:124 pid:111220591
+iyr:2019 eyr:2001
+byr:1933 hgt:159in
+
+pid:812929897 hgt:159cm hcl:#fffffd byr:1942 iyr:2026 cid:291
+ecl:oth
+eyr:2024
+
+cid:83 pid:524032739 iyr:2013 ecl:amb byr:1974
+hgt:191cm hcl:#ceb3a1 eyr:2028
+
+ecl:gry hcl:eefed5 pid:88405792 hgt:183cm cid:221 byr:1963 eyr:2029
+
+pid:777881168 ecl:grn
+hgt:181cm 
 </code>
 </pre>
 </div>
@@ -766,7 +748,7 @@ How many passwords are valid according to their policies?<br>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><span class="n">count_valids</span><span class="p">(</span><span class="n">text_input</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">solve_problem</span><span class="p">(</span><span class="n">text_input</span><span class="p">)</span>
 </code></pre></div>
 
 </div>
@@ -775,56 +757,17 @@ How many passwords are valid according to their policies?<br>
 <div class="output_area">
 <div class="output_text output_subarea output_execute_result">
 <pre>
-<code>550</code>
+<code>264</code>
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="solution-2">Solution 2<a class="headerlink" href="#solution-2" title="Permanent link">&para;</a></h2>
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
-
-<span class="n">valid_passwords</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">valid_passwords_part_two</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./day-2-input.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>
-        <span class="c1"># Parse line with regular expression</span>
-        <span class="n">n_min</span><span class="p">,</span> <span class="n">n_max</span><span class="p">,</span> <span class="n">letter</span><span class="p">,</span> <span class="n">password</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d+)-(\d+) (\w): (\w+)&quot;</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
-        <span class="c1"># Part one</span>
-        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_min</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">letter</span><span class="p">,</span> <span class="n">password</span><span class="p">))</span> <span class="o">&lt;=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_max</span><span class="p">):</span>
-            <span class="n">valid_passwords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
-        <span class="c1"># Part two, using Python&#39;s XOR operator</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">password</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">n_min</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">letter</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">password</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">n_max</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">letter</span><span class="p">):</span>
-            <span class="n">valid_passwords_part_two</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
-</code></pre></div>
-
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="highlight"><pre><span></span><code><span class="c1"># Answer to part one</span>
-<span class="nb">len</span><span class="p">(</span><span class="n">valid_passwords</span><span class="p">)</span>
-</code></pre></div>
-
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="highlight"><pre><span></span><code><span class="c1"># Answer to part two</span>
-<span class="nb">len</span><span class="p">(</span><span class="n">valid_passwords_part_two</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code>
 </code></pre></div>
 
 </div>
@@ -847,7 +790,7 @@ How many passwords are valid according to their policies?<br>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../.." class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../day3/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -856,25 +799,11 @@ How many passwords are valid according to their policies?<br>
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                🎄🎄🎄 Advent of code
-              </div>
-            </div>
-          </a>
-        
-        
-          <a href="../day3/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
                 Day 3
               </div>
             </div>
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-            </div>
           </a>
+        
         
       </nav>
     </div>

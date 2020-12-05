@@ -1,6 +1,4 @@
 
-
-
 <!doctype html>
 <html lang="en" class="no-js">
   <head>
@@ -11,13 +9,14 @@
         <meta name="description" content="Daily coding challenges">
       
       
+      
         <link rel="canonical" href="https://ekimetrics.com/tutorials/day3/">
       
       
         <meta name="author" content="Ekimetrics">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.0">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.6">
     
     
       
@@ -25,13 +24,17 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.89dc9fe3.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6910b76c.min.css">
       
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.196e0c26.min.css">
+        
       
     
     
     
       
+        
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
@@ -52,7 +55,13 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
   
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -69,7 +78,9 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
+      
+
+<header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
     <a href="https://ekimetrics.com/" title="Ekimetrics - Advent Of Code" class="md-header-nav__button md-logo" aria-label="Ekimetrics - Advent Of Code">
       
@@ -77,7 +88,7 @@
 
     </a>
     <label class="md-header-nav__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
     </label>
     <div class="md-header-nav__title" data-md-component="header-title">
       
@@ -95,27 +106,27 @@
     </div>
     
       <label class="md-header-nav__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
       </label>
       
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
       </label>
       <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
       </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Type to start searching
+            Initializing search
           </div>
           <ol class="md-search-result__list"></ol>
         </div>
@@ -130,7 +141,7 @@
 <a href="https://github.com/ekimetrics/advent-of-code" title="Go to repository" class="md-source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     advent-of-code
@@ -143,47 +154,7 @@
     
     <div class="md-container" data-md-component="container">
       
-        
       
-      
-        
-          
-
-  
-
-<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-    <li class="md-tabs__item">
-      
-        <a href="../.." class="md-tabs__link">
-          Home
-        </a>
-      
-    </li>
-  
-
-      
-        
-  
-  
-    <li class="md-tabs__item">
-      
-        <a href="../day2/" class="md-tabs__link md-tabs__link--active">
-          Challenges
-        </a>
-      
-    </li>
-  
-
-      
-    </ul>
-  </div>
-</nav>
         
       
       <main class="md-main" data-md-component="main">
@@ -193,7 +164,9 @@
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="https://ekimetrics.com/" title="Ekimetrics - Advent Of Code" class="md-nav__button md-logo" aria-label="Ekimetrics - Advent Of Code">
       
@@ -208,7 +181,7 @@
 <a href="https://github.com/ekimetrics/advent-of-code" title="Go to repository" class="md-source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     advent-of-code
@@ -225,19 +198,14 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
-    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1" >
     <label class="md-nav__link" for="nav-1">
       Home
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
-      </span>
+      <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Home" data-md-level="1">
       <label class="md-nav__title" for="nav-1">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
-        </span>
+        <span class="md-nav__icon md-icon"></span>
         Home
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -249,7 +217,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." title="🎄🎄🎄 Advent of code" class="md-nav__link">
+    <a href="../.." class="md-nav__link">
       🎄🎄🎄 Advent of code
     </a>
   </li>
@@ -269,19 +237,14 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
-    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
     <label class="md-nav__link" for="nav-2">
       Challenges
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
-      </span>
+      <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Challenges" data-md-level="1">
       <label class="md-nav__title" for="nav-2">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
-        </span>
+        <span class="md-nav__icon md-icon"></span>
         Challenges
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -293,7 +256,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../day2/" title="Day 2" class="md-nav__link">
+    <a href="../day2/" class="md-nav__link">
       Day 2
     </a>
   </li>
@@ -315,12 +278,10 @@
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
         Day 3
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
-        </span>
+        <span class="md-nav__icon md-icon"></span>
       </label>
     
-    <a href="./" title="Day 3" class="md-nav__link md-nav__link--active">
+    <a href="./" class="md-nav__link md-nav__link--active">
       Day 3
     </a>
     
@@ -332,9 +293,7 @@
   
   
     <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
-      </span>
+      <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-scrollfix>
@@ -414,10 +373,49 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#solution-3" class="md-nav__link">
+    Solution 3
+  </a>
+  
+    <nav class="md-nav" aria-label="Solution 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#part-1_1" class="md-nav__link">
+    Part 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#part-2_1" class="md-nav__link">
+    Part 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../day4/" class="md-nav__link">
+      Day 4
+    </a>
   </li>
 
         
@@ -444,9 +442,7 @@
   
   
     <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
-      </span>
+      <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-scrollfix>
@@ -526,6 +522,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#solution-3" class="md-nav__link">
+    Solution 3
+  </a>
+  
+    <nav class="md-nav" aria-label="Solution 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#part-1_1" class="md-nav__link">
+    Part 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#part-2_1" class="md-nav__link">
+    Part 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -539,13 +562,8 @@
               
                 
                 
-                  
-                
-                
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
 <script>
 (function() {
   function addWidgetsRenderer() {
@@ -572,14 +590,16 @@
 </script>
 
 <div class="cell border-box-sizing text_cell rendered">
-<p><div class="inner_cell" markdown="1">
-<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="day-3-toboggan-trajectory">Day 3: Toboggan Trajectory<a class="headerlink" href="#day-3-toboggan-trajectory" title="Permanent link">&para;</a></h1>
 <h2 id="problem">Problem<a class="headerlink" href="#problem" title="Permanent link">&para;</a></h2>
-<p><div class="admonition note">
+<div class="admonition note">
 <p class="admonition-title">Note</p>
-With the toboggan login problems resolved, you set off toward the airport. While travel by toboggan might be easy, it's certainly not safe: there's very minimal steering and the area is covered in trees. You'll need to see which angles will take you near the fewest trees.<br></p>
-<p>Due to the local geology, trees in this area only grow on exact integer coordinates in a grid. You make a map (your puzzle input) of the open squares (.) and trees (#) you can see. For example:<br></p>
+With the toboggan login problems resolved, you set off toward the airport. While travel by toboggan might be easy, it's certainly not safe: there's very minimal steering and the area is covered in trees. You'll need to see which angles will take you near the fewest trees.<br>
+
+Due to the local geology, trees in this area only grow on exact integer coordinates in a grid. You make a map (your puzzle input) of the open squares (.) and trees (#) you can see. For example:<br>
+
 <div class="highlight"><pre><span></span><code>..##.......
 #...#...#..
 .#....#..#.
@@ -593,8 +613,9 @@ With the toboggan login problems resolved, you set off toward the airport. While
 .#..#...#.#
 </code></pre></div>
 
-<p>These aren't the only trees, though; due to something you read about once involving arboreal genetics and biome stability, the same pattern repeats to the right many times<br></p>
-<p><div class="highlight"><pre><span></span><code>..##.........##.........##.........##.........##.........##.......  ---&gt;
+These aren't the only trees, though; due to something you read about once involving arboreal genetics and biome stability, the same pattern repeats to the right many times<br>
+
+<div class="highlight"><pre><span></span><code>..##.........##.........##.........##.........##.........##.......  ---&gt;
 #...#...#..#...#...#..#...#...#..#...#...#..#...#...#..#...#...#..
 .#....#..#..#....#..#..#....#..#..#....#..#..#....#..#..#....#..#.
 ..#.#...#.#..#.#...#.#..#.#...#.#..#.#...#.#..#.#...#.#..#.#...#.#
@@ -606,11 +627,15 @@ With the toboggan login problems resolved, you set off toward the airport. While
 #...##....##...##....##...##....##...##....##...##....##...##....#
 .#..#...#.#.#..#...#.#.#..#...#.#.#..#...#.#.#..#...#.#.#..#...#.#  ---&gt;
 </code></pre></div>
-You start on the open square (.) in the top-left corner and need to reach the bottom (below the bottom-most row on your map).<br></p>
-<p>The toboggan can only follow a few specific slopes (you opted for a cheaper model that prefers rational numbers); start by counting all the trees you would encounter for the slope right 3, down 1:<br></p>
-<p>From your starting position at the top-left, check the position that is right 3 and down 1. Then, check the position that is right 3 and down 1 from there, and so on until you go past the bottom of the map.<br></p>
-<p>The locations you'd check in the above example are marked here with O where there was an open square and X where there was a tree:</p>
-<p><div class="highlight"><pre><span></span><code>..##.........##.........##.........##.........##.........##.......  ---&gt;
+You start on the open square (.) in the top-left corner and need to reach the bottom (below the bottom-most row on your map).<br>
+
+The toboggan can only follow a few specific slopes (you opted for a cheaper model that prefers rational numbers); start by counting all the trees you would encounter for the slope right 3, down 1:<br>
+
+From your starting position at the top-left, check the position that is right 3 and down 1. Then, check the position that is right 3 and down 1 from there, and so on until you go past the bottom of the map.<br>
+
+The locations you'd check in the above example are marked here with O where there was an open square and X where there was a tree:
+
+<div class="highlight"><pre><span></span><code>..##.........##.........##.........##.........##.........##.......  ---&gt;
 #..O#...#..#...#...#..#...#...#..#...#...#..#...#...#..#...#...#..
 .#....X..#..#....#..#..#....#..#..#....#..#..#....#..#..#....#..#.
 ..#.#...#O#..#.#...#.#..#.#...#.#..#.#...#.#..#.#...#.#..#.#...#.#
@@ -622,37 +647,36 @@ You start on the open square (.) in the top-left corner and need to reach the bo
 #...##....##...##....##...#X....##...##....##...##....##...##....#
 .#..#...#.#.#..#...#.#.#..#...X.#.#..#...#.#.#..#...#.#.#..#...#.#  ---&gt;
 </code></pre></div>
-In this example, traversing the map using this slope would cause you to encounter 7 trees.<br></p>
-<p>Starting at the top-left corner of your map and following a slope of right 3 and down 1, how many trees would you encounter?<br>
-</div></p>
+In this example, traversing the map using this slope would cause you to encounter 7 trees.<br>
+
+Starting at the top-left corner of your map and following a slope of right 3 and down 1, how many trees would you encounter?<br>
+</div>
 <p>https://adventofcode.com/2020/day/3</p>
 </div>
 </div>
-
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
-<p><div class="inner_cell" markdown="1">
-<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="solution-1">Solution 1<a class="headerlink" href="#solution-1" title="Permanent link">&para;</a></h2>
-<p></div>
-</div></p>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
-<p><div class="inner_cell" markdown="1">
-<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="tip">Tip<a class="headerlink" href="#tip" title="Permanent link">&para;</a></h3>
-<p></div>
-</div></p>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
-<p><div class="inner_cell" markdown="1">
-<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
-You can use numpy here to avoid doing loops.<br>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You can use numpy here to avoid doing loops.<br>
 Using For loops here would work, but it would not be scalable when the size of the grid grows. <br>
-If you apply only numpy vectorization operations, it's a little more complicated but you are almost instantly scalable.
+If you apply only numpy vectorization operations, it's a little more complicated but you are almost instantly scalable.</p>
 </div>
-</div></p>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -661,26 +685,25 @@ If you apply only numpy vectorization operations, it's a little more complicated
 </code></pre></div>
 
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
-<p><div class="inner_cell" markdown="1">
-<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="writing-the-solution-functions">Writing the solution functions<a class="headerlink" href="#writing-the-solution-functions" title="Permanent link">&para;</a></h3>
-<p></div>
-</div></p>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">solve_problem</span><span class="p">(</span><span class="n">text_input</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span><span class="n">slope</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">solve_problem</span><span class="p">(</span><span class="n">text_input</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span><span class="n">slope_coefs</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 
     <span class="c1"># Transform the text input to a list of list of characters</span>
     <span class="n">text_array</span> <span class="o">=</span> <span class="n">text_input</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">text_array</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">list</span><span class="p">,</span><span class="n">text_array</span><span class="p">))</span>
 
     <span class="c1"># Prepare and vectorize the slope with numpy</span>
-    <span class="n">slope</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">slope</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">slope</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">slope_coefs</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="c1"># Convert to a matrix of 1 and 0s</span>
     <span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">text_array</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;#&quot;</span><span class="p">)</span>
@@ -705,14 +728,13 @@ If you apply only numpy vectorization operations, it's a little more complicated
 </code></pre></div>
 
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
-<p><div class="inner_cell" markdown="1">
-<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="solving-the-example">Solving the example<a class="headerlink" href="#solving-the-example" title="Permanent link">&para;</a></h3>
-<p></div>
-</div></p>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -737,14 +759,12 @@ If you apply only numpy vectorization operations, it's a little more complicated
 </code></pre></div>
 
 </div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output" markdown="1">
-
-
-<div class="output_area" markdown="1">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
+<code>
 ..##.........##.........##.........##.........##.........##.......
 #...#...#..#...#...#..#...#...#..#...#...#..#...#...#..#...#...#..
 .#....#..#..#....#..#..#....#..#..#....#..#..#....#..#..#....#..#.
@@ -757,13 +777,13 @@ If you apply only numpy vectorization operations, it's a little more complicated
 #...##....##...##....##...##....##...##....##...##....##...##....#
 .#..#...#.#.#..#...#.#.#..#...#.#.#..#...#.#.#..#...#.#.#..#...#.#
 
+</code>
 </pre>
 </div>
 </div>
-
 </div>
 </div>
-
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -772,8 +792,6 @@ If you apply only numpy vectorization operations, it's a little more complicated
 
 </div>
 </div>
-</div>
-
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -783,24 +801,19 @@ If you apply only numpy vectorization operations, it's a little more complicated
 </code></pre></div>
 
 </div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output" markdown="1">
-
-
-<div class="output_area" markdown="1">
-
-
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[1],
-       [3]])</pre>
-</div>
-
-</div>
-
+<pre>
+<code>array([[1],
+       [3]])</code>
+</pre>
 </div>
 </div>
-
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -809,23 +822,16 @@ If you apply only numpy vectorization operations, it's a little more complicated
 </code></pre></div>
 
 </div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output" markdown="1">
-
-
-<div class="output_area" markdown="1">
-
-
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
 <div class="output_text output_subarea output_execute_result">
-<pre>11.0</pre>
-</div>
-
-</div>
-
+<pre>
+<code>11.0</code>
+</pre>
 </div>
 </div>
-
+</div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
@@ -838,31 +844,24 @@ If you apply only numpy vectorization operations, it's a little more complicated
 </code></pre></div>
 
 </div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output" markdown="1">
-
-
-<div class="output_area" markdown="1">
-
-
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10],
-       [ 0,  3,  6,  9, 12, 15, 18, 21, 24, 27, 30]])</pre>
-</div>
-
-</div>
-
+<pre>
+<code>array([[ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10],
+       [ 0,  3,  6,  9, 12, 15, 18, 21, 24, 27, 30]])</code>
+</pre>
 </div>
 </div>
-
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="highlight"><pre><span></span><code><span class="n">selection</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">index</span><span class="p">)]</span>
 </code></pre></div>
-
-</div>
 
 </div>
 </div>
@@ -873,62 +872,50 @@ If you apply only numpy vectorization operations, it's a little more complicated
 </code></pre></div>
 
 </div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output" markdown="1">
-
-
-<div class="output_area" markdown="1">
-
-
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
 <div class="output_text output_subarea output_execute_result">
-<pre>7</pre>
-</div>
-
-</div>
-
+<pre>
+<code>7</code>
+</pre>
 </div>
 </div>
-
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
-<p><div class="inner_cell" markdown="1">
-<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
-Or using the function
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Or using the function</p>
 </div>
-</div></p>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-</div>
-</div>
 <div class="highlight"><pre><span></span><code><span class="n">solve_problem</span><span class="p">(</span><span class="n">x</span><span class="p">,(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 </code></pre></div>
 
 </div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output" markdown="1">
-
-
-<div class="output_area" markdown="1">
-
-
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
 <div class="output_text output_subarea output_execute_result">
-<pre>7</pre>
-</div>
-
-</div>
-
+<pre>
+<code>7</code>
+</pre>
 </div>
 </div>
-
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
-<p><div class="inner_cell" markdown="1">
-<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="solving-the-final-solution">Solving the final solution<a class="headerlink" href="#solving-the-final-solution" title="Permanent link">&para;</a></h3>
-<p></div>
-</div></p>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -938,14 +925,12 @@ Or using the function
 </code></pre></div>
 
 </div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output" markdown="1">
-
-
-<div class="output_area" markdown="1">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>.#..............##....#.#.####.
+<pre>
+<code>.#..............##....#.#.####.
 ##..........#.....##...........
 .......#....##...........#.#...
 .........#.#...#..........#....
@@ -961,45 +946,38 @@ Or using the function
 #......##......................
 ......#..............#.........
 ..##...#....###.##..
+</code>
 </pre>
 </div>
 </div>
-
 </div>
 </div>
-
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-</div>
-</div>
 <div class="highlight"><pre><span></span><code><span class="n">solve_problem</span><span class="p">(</span><span class="n">text_input</span><span class="p">,(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 </code></pre></div>
 
 </div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output" markdown="1">
-
-
-<div class="output_area" markdown="1">
-
-
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
 <div class="output_text output_subarea output_execute_result">
-<pre>193</pre>
-</div>
-
-</div>
-
+<pre>
+<code>193</code>
+</pre>
 </div>
 </div>
-
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
-<p><div class="inner_cell" markdown="1">
-<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="solution-2">Solution 2<a class="headerlink" href="#solution-2" title="Permanent link">&para;</a></h2>
-<p></div>
-</div></p>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1008,7 +986,6 @@ Or using the function
 </code></pre></div>
 
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1024,7 +1001,6 @@ Or using the function
 </code></pre></div>
 
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1034,14 +1010,13 @@ Or using the function
 </code></pre></div>
 
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
-<p><div class="inner_cell" markdown="1">
-<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="part-1">Part 1<a class="headerlink" href="#part-1" title="Permanent link">&para;</a></h3>
-<p></div>
-</div></p>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1051,7 +1026,6 @@ Or using the function
 </code></pre></div>
 
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1061,35 +1035,28 @@ Or using the function
 </code></pre></div>
 
 </div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output" markdown="1">
-
-
-<div class="output_area" markdown="1">
-
-
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
 <div class="output_text output_subarea output_execute_result">
-<pre>193</pre>
-</div>
-
-</div>
-
+<pre>
+<code>193</code>
+</pre>
 </div>
 </div>
-
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
-<p><div class="inner_cell" markdown="1">
-<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="part-2">Part 2<a class="headerlink" href="#part-2" title="Permanent link">&para;</a></h3>
-<p></div>
-</div></p>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-</div>
-</div>
 <div class="highlight"><pre><span></span><code><span class="c1"># Generalising part one with a function</span>
 <span class="k">def</span> <span class="nf">check_slope</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">down</span><span class="p">):</span>
     <span class="n">matrix_reps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">((</span><span class="n">right</span><span class="o">*</span><span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">//</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="p">))</span>
@@ -1097,7 +1064,7 @@ Or using the function
 </code></pre></div>
 
 </div>
-
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -1111,7 +1078,6 @@ Or using the function
 </code></pre></div>
 
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1121,7 +1087,6 @@ Or using the function
 </code></pre></div>
 
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1130,23 +1095,187 @@ Or using the function
 </code></pre></div>
 
 </div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output" markdown="1">
-
-
-<div class="output_area" markdown="1">
-
-
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
 <div class="output_text output_subarea output_execute_result">
-<pre>1355323200</pre>
+<pre>
+<code>1355323200</code>
+</pre>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="solution-3">Solution 3<a class="headerlink" href="#solution-3" title="Permanent link">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This solution is for-loop based, as opposed to the numpy-based solutions 1 and 2</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">contents</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;inputs/day3.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</code></pre></div>
 
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Transforming the text into a list of strings</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">contents</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+<span class="n">data</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>[&#39;.#..............##....#.#.####.&#39;,
+ &#39;##..........#.....##...........&#39;,
+ &#39;.......#....##...........#.#...&#39;]</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="part-1_1">Part 1<a class="headerlink" href="#part-1_1" title="Permanent link">&para;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">count_hits</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">slope</span><span class="p">:</span><span class="nb">tuple</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="c1"># Splitting the slope tuple into distinct horizontal and vertical slopes</span>
+    <span class="n">x_slope</span> <span class="o">=</span> <span class="n">slope</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">y_slope</span> <span class="o">=</span> <span class="n">slope</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1"># Initialising counters</span>
+    <span class="n">hits</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># x will represent the horizontal position</span>
+
+    <span class="c1"># Looping over data using an index - this solution would work equally well simply looping over </span>
+    <span class="c1"># the elements of data, but I believe a coordinate-based approach is more intuitive here</span>
+    <span class="c1"># y_slope serves as the step in the slicer</span>
+    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))[::</span><span class="n">y_slope</span><span class="p">]:</span>
+
+        <span class="c1"># modulo function on length of current row allows us to forego horizontal duplication</span>
+        <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="n">x</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">idx</span><span class="p">])]</span> <span class="o">==</span> <span class="s1">&#39;#&#39;</span><span class="p">:</span>
+            <span class="n">hits</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="c1"># incrementing the horizontal position</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="n">x_slope</span>
+
+    <span class="k">return</span> <span class="n">hits</span>
+</code></pre></div>
 
 </div>
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 
+<div class="highlight"><pre><span></span><code><span class="n">slope</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">count_hits</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">slope</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>193</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The answer to part 1 of the puzzle is: </span><span class="si">{</span><span class="n">count_hits</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">slope</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>The answer to part 1 of the puzzle is: 193
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="part-2_1">Part 2<a class="headerlink" href="#part-2_1" title="Permanent link">&para;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">slopes</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)]</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Initializing the hit product - as this will be product-based instead of sum-based,</span>
+<span class="c1"># initial value will be set at 1 instead of 0</span>
+<span class="n">hit_prod</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">slope</span> <span class="ow">in</span> <span class="n">slopes</span><span class="p">:</span>
+    <span class="n">hit_prod</span> <span class="o">=</span> <span class="n">hit_prod</span> <span class="o">*</span> <span class="n">count_hits</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">slope</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The answer to part 2 of the puzzle is: </span><span class="si">{</span><span class="n">hit_prod</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>The answer to part 2 of the puzzle is: 1355323200
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
                 
               
@@ -1166,9 +1295,9 @@ Or using the function
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../day2/" title="Day 2" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../day2/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
@@ -1180,6 +1309,20 @@ Or using the function
             </div>
           </a>
         
+        
+          <a href="../day4/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Day 4
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
         
       </nav>
     </div>
@@ -1200,15 +1343,15 @@ Or using the function
       
     </div>
     
-      <script src="../../assets/javascripts/vendor.36cbf620.min.js"></script>
-      <script src="../../assets/javascripts/bundle.00c583dd.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      <script src="../../assets/javascripts/vendor.fd16492e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.7836ba4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({
           base: "../..",
-          features: ["tabs", "instant"],
+          features: ['tabs', 'instant'],
           search: Object.assign({
-            worker: "../../assets/javascripts/worker/search.7f7c8775.min.js"
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>

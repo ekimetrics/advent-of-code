@@ -34,5 +34,8 @@ jobs:
       - name: Install requirements
         run: pip install -r requirements.txt
 
+      - name: Pull last version before deploy
+        run: git pull
+
       - name: Deploy docs
         run: mkdocs gh-deploy

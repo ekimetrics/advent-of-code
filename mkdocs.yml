@@ -41,6 +41,8 @@ nav:
     - Day 3: tutorials/day3.ipynb
     - Day 4: tutorials/day4.ipynb
     - Day 5: tutorials/day5.ipynb
+  - Toolbox:
+    - Hackathon: toolbox/hackathon.ipynb
 
 plugins:
   - search
